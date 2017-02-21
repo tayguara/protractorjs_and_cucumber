@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "protractor": "^5.1.1",
+    "protractor": "latest",
     "jasmine": "2.0.1",
     "cucumber": "^1.0.0",
     "protractor-cucumber-framework": "latest",
