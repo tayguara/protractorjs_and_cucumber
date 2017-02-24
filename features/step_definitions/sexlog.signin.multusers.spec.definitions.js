@@ -4,33 +4,26 @@ chai.use(chaiAsPromised);
 let expect         = chai.expect;
 let assert         = chai.assert;
 let elements       = require('../../pages/sexlog.page');
+let processUsers   = require('../../util/process.muiltuser');
 let sexlogStep     = require('../../steps/sexlog.steps');
 let titleExploreSL = require('../../strings/title');
-let users          = require('../../dataDriven/sexlog.users');
 
 module.exports = function() {
 
-    this.Given(/^Eu acesso a página "([^"]*)"$/,
-        function(site, callback) {
+    this.Given(/^Acessar a URL "([^"]*)"$/,
+        function(url, callback) {
             browser.driver.manage().window().maximize();
-            browser.get(site)
+            browser.get(url)
                 .then(callback);
         });
 
-    this.When(/^Insiro meu login e senha$/,
-        function(callback) {
-            elements.inputLogin.sendKeys(users.userSL.login);
-            elements.inputPassword.sendKeys(users.userSL.password)
-                .then(callback);
+    this.When(/^Inserir o "([^"]*)" e "([^"]*)"$/,
+        function(login, pass, callback) {
+            sexlogStep.signIn(processUsers.getUser(login), pass);
+            callback();
         });
 
-    this.When(/^E clico em login$/,
-        function(callback) {
-            elements.btnSignIn.click()
-                .then(callback);
-        });
-
-    this.Then(/^Eu devo verificar se o texto do title no Explorar, está ok$/,
+    this.Then(/^precisa verificar se o texto do title no Explorar, está ok$/,
         function(callback) {
             elements.titleLiveCam.isDisplayed();
             browser.getTitle().then(function(site) {
@@ -40,18 +33,18 @@ module.exports = function() {
             }).then(callback);
         });
 
-    this.Then(/^E devo verificar se o titulo da livecam no Explorar é "([^"]*)"$/,
+    this.Then(/^verificar se o titulo da livecam no Explorar é "([^"]*)"$/,
         function(title, callback) {
             elements.titleLiveCam.isDisplayed();
             elements.titleLiveCam.getText().then(function(text) {
                 assert.equal(text, title);
-            }).then(callback);
+            })
+                .then(callback);
         });
 
-    this.Then(/^Deslogar com o usuário$/,
+    this.Then(/^Sair do Sexlog$/,
         function(callback) {
             sexlogStep.logOut();
-            browser.close()
-                .then(callback);
+            callback();
         });
 };
