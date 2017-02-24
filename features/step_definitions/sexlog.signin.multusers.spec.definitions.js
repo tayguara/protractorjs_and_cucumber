@@ -4,7 +4,7 @@ chai.use(chaiAsPromised);
 let expect         = chai.expect;
 let assert         = chai.assert;
 let elements       = require('../../pages/sexlog.page');
-let processUsers   = require('../../util/process.muiltuser');
+let processUsers   = require('../../util/process.multiuser.js');
 let sexlogStep     = require('../../steps/sexlog.steps');
 let titleExploreSL = require('../../strings/title');
 
