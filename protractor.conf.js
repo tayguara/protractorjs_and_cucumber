@@ -1,13 +1,15 @@
 //protractor.conf.js
 exports.config = {
-    seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
+    seleniumAddress: 'http://192.168.10.107:4444/wd/hub',
     getPageTimeout: 60000,
     allScriptsTimeout: 500000,
     framework: 'custom',
     // path relative to the current config file
     frameworkPath: require.resolve('protractor-cucumber-framework'),
     capabilities: {
-        'browserName': 'chrome'
+        'browserName': 'chrome',
+        shardTestFiles: true,
+        maxInstances: 10
     },
 
     // Spec patterns are relative to this directory.
@@ -21,7 +23,7 @@ exports.config = {
         require: [
             'features/step_definitions/*definitions.js',
             'support/env.js'
-            ],
+        ],
         tags: false,
         format: 'pretty',
         profile: false,
