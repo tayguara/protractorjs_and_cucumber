@@ -3,11 +3,11 @@ Feature: Multi login no Sexlog
   efetar o login com todos
 
   Scenario Outline: Sexlog multi parameter
-    Given Acessar a URL "https://sexlog.com/"
+    Given Eu acesso a página "https://sexlog.com/"
     When Inserir o "<login>" e "<password>"
-    Then precisa verificar se o texto do title no Explorar, está ok
+    Then Eu devo verificar se o texto do title no Explorar, está ok
     And verificar se o titulo da livecam no Explorar é "LIVECAM"
-    Then Sair do Sexlog
+    Then Deslogar com o usuário
 
     Examples:
       | login  | password |
