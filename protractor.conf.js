@@ -29,14 +29,5 @@ exports.config = {
         format: 'pretty',
         profile: false,
         'no-source': true
-    },
-
-    // Options to be passed to Jasmine-node.
-    jasmineNodeOpts: {
-        onComplete: true,
-        isVerbose: true,
-        showColors: true,
-        includeStackTrace: true,
-        defaultTimeoutInterval: 500000
     }
 };
