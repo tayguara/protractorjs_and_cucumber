@@ -5,8 +5,8 @@ Feature: Efetuar login no Sexlog com cucumber e protractor
 
   Scenario: Sexlog com cucumber e protractor
     Given Eu acesso a página "https://sexlog.com/"
-    When Insiro meu login e senha
-    And E clico em login
+    When Efetuo o login
     Then Eu devo verificar se o texto do title no Explorar, está ok
-    And E devo verificar se o titulo da livecam no Explorar é "LIVECAM"
+    And verificar se o titulo da livecam no Explorar é "LIVECAM"
     Then Deslogar com o usuário
+    And Fechar o browser

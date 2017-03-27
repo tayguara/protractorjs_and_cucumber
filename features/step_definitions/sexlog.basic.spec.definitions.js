@@ -7,13 +7,14 @@ let elements       = require('../../pages/sexlog.page');
 let processUsers   = require('../../util/process.multiuser.js');
 let sexlogStep     = require('../../steps/sexlog.steps');
 let titleExploreSL = require('../../strings/title');
+let users          = require('../../dataDriven/sexlog.users');
 
 module.exports = function() {
 
-    this.Given(/^Acessar a URL "([^"]*)"$/,
-        function(url, callback) {
+    this.Given(/^Eu acesso a página "([^"]*)"$/,
+        function(site, callback) {
             browser.driver.manage().window().maximize();
-            browser.get(url)
+            browser.get(site)
                 .then(callback);
         });
 
@@ -23,7 +24,13 @@ module.exports = function() {
             callback();
         });
 
-    this.Then(/^precisa verificar se o texto do title no Explorar, está ok$/,
+    this.When(/^Efetuo o login$/,
+        function(callback) {
+            sexlogStep.signIn(users.userSL.login, users.userSL.password);
+            callback();
+        });
+
+    this.Then(/^Eu devo verificar se o texto do title no Explorar, está ok$/,
         function(callback) {
             elements.titleLiveCam.isDisplayed();
             browser.getTitle().then(function(site) {
@@ -42,9 +49,15 @@ module.exports = function() {
                 .then(callback);
         });
 
-    this.Then(/^Sair do Sexlog$/,
+    this.Then(/^Deslogar com o usuário$/,
         function(callback) {
             sexlogStep.logOut();
             callback();
+        });
+
+    this.Then(/^Fechar o browser$/,
+        function(callback) {
+            browser.close()
+                .then(callback);
         });
 };

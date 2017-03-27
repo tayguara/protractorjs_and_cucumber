@@ -4,13 +4,10 @@
   "private": true,
   "dependencies": {
     "protractor": "latest",
-    "jasmine": "2.0.1",
     "cucumber": "^1.0.0",
     "protractor-cucumber-framework": "latest",
     "chai": "latest",
     "chai-as-promised": "latest",
-    "jasmine-reporters": "^2.2.0",
-    "jasmine-spec-reporter": "^2.5.0",
     "protractor-helpers": "^1.0.1"
   }
 }

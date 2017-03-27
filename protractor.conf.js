@@ -14,7 +14,8 @@ exports.config = {
 
     // Spec patterns are relative to this directory.
     specs: [
-        'features/*.feature'
+        'features/*.feature',
+        'features/*/*.feature'
     ],
 
     baseURL: 'http://localhost:8080/',
@@ -28,14 +29,5 @@ exports.config = {
         format: 'pretty',
         profile: false,
         'no-source': true
-    },
-
-    // Options to be passed to Jasmine-node.
-    jasmineNodeOpts: {
-        onComplete: true,
-        isVerbose: true,
-        showColors: true,
-        includeStackTrace: true,
-        defaultTimeoutInterval: 500000
     }
 };
