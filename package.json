@@ -3,11 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "protractor": "latest",
-    "cucumber": "^1.0.0",
-    "protractor-cucumber-framework": "latest",
     "chai": "latest",
     "chai-as-promised": "latest",
+    "cucumber": "^1.0.0",
+    "module_name": "^1.0.0",
+    "protractor": "latest",
+    "protractor-cucumber-framework": "latest",
     "protractor-helpers": "^1.0.1"
+  },
+  "devDependencies": {
+    "fs": "0.0.1-security"
   }
 }

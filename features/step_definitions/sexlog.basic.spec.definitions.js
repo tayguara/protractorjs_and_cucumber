@@ -1,18 +1,20 @@
-let chai           = require('chai');
-let chaiAsPromised = require('chai-as-promised');
+const envTest        = require('../../support/settings');
+const chai           = require('chai');
+const elements       = require('../../pages/sexlog.page');
+const sexlogStep     = require('../../steps/sexlog.steps');
+const titleExploreSL = require('../../strings/title');
+const users          = require('../../dataDriven/sexlog.users');
+const contents       = require('../../dataDriven/contents.to.upload');
+const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let expect         = chai.expect;
-let assert         = chai.assert;
-let elements       = require('../../pages/sexlog.page');
-let processUsers   = require('../../util/process.multiuser.js');
-let sexlogStep     = require('../../steps/sexlog.steps');
-let titleExploreSL = require('../../strings/title');
-let users          = require('../../dataDriven/sexlog.users');
+let expect = chai.expect;
+let assert = chai.assert;
 
 module.exports = function() {
 
     this.Given(/^Eu acesso a página "([^"]*)"$/,
         function(site, callback) {
+            site = envTest.setConf.testVars.baseURLSexlog;
             browser.driver.manage().window().maximize();
             browser.get(site)
                 .then(callback);
@@ -20,13 +22,14 @@ module.exports = function() {
 
     this.When(/^Inserir o "([^"]*)" e "([^"]*)"$/,
         function(login, pass, callback) {
-            sexlogStep.signIn(processUsers.getUser(login), pass);
+            sexlogStep.signIn(users.getUserById(login).login, users.getUserById(pass).password);
             callback();
         });
 
     this.When(/^Efetuo o login$/,
         function(callback) {
-            sexlogStep.signIn(users.userSL.login, users.userSL.password);
+            let user = users.getRandomUser;
+            sexlogStep.signIn(user.login, user.password);
             callback();
         });
 
@@ -59,5 +62,11 @@ module.exports = function() {
         function(callback) {
             browser.close()
                 .then(callback);
+        });
+
+    this.Then(/^Fazer upload de (\d+) foto$/,
+        function(total, callback) {
+            sexlogStep.getUploadMedia(contents.getRandomContent.absolutePath);
+            callback();
         });
 };

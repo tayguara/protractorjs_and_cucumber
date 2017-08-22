@@ -1,6 +1,7 @@
 //protractor.conf.js
 exports.config = {
-    seleniumAddress: 'http://192.168.10.107:4444/wd/hub',
+    environmentTest: 'devel',
+    seleniumAddress: 'http://localhost:4444/wd/hub',
     getPageTimeout: 60000,
     allScriptsTimeout: 500000,
     framework: 'custom',
