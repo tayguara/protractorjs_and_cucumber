@@ -11,7 +11,7 @@ lasted version of ProtractorTest. To work, execute the code below:
 ## Installation
 
 ```bash
-$ git clone ssh://git@stash.sexlog.dev:7999/es/js-protractor-and-cucumber-framework-e2e-tests.git
+$ git clone git@github.com:tayguara/protractorjs_and_cucumber.git
 $ cd js-protractor-and-cucumber-framework-e2e-tests/
 $ npm install
 $ npm install -g protractor
