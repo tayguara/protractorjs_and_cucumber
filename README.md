@@ -29,7 +29,7 @@ $ protractor protractor.conf.js
 
 The MIT License (MIT)
 
-Copyright (c) 2008-2017 eSapiens Internet S/A
+Copyright (c) 2013-2017 Tayguara Dias Reis
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
